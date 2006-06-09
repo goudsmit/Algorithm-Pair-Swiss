@@ -1,4 +1,4 @@
-# $Id: Best.pm,v 1.10 2005/01/24 02:21:46 reid Exp $
+# $Id: Swiss.pm,v 0.1 2006/06/09 02:21:46 giel Exp $
 
 #   Algorithm::Pair::Swiss.pm
 #
