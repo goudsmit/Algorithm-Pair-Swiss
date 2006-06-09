@@ -80,7 +80,7 @@ use strict;
 use warnings;
 require 5.001;
 
-use version; our $VERSION = sprintf(q{0.1.%6d} => q{$Revision: 1$} =~ /(\d+)/g);
+use version; our $VERSION = sprintf(q{0.1.%6d} => q{$Revision$} =~ /(\d+)/g);
 
 use Tie::IxHash 1.21;
 
