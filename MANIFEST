@@ -1,0 +1,4 @@
+Makefile.PL
+MANIFEST
+lib/Algorithm/Pair/Swiss.pm 
+META.yml                                 Module meta-data (added by MakeMaker)

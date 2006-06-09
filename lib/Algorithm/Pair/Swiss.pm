@@ -80,7 +80,7 @@ use strict;
 use warnings;
 require 5.001;
 
-use version; our $VERSION = sprintf(q{0.1.%6d} => q{$Revision$} =~ /(\d+)/g);
+use version; our $VERSION = sprintf(q{0.1.%06d} => q{$Revision:1$} =~ /(\d+)/g);
 
 use Tie::IxHash 1.21;
 
@@ -109,7 +109,7 @@ sub new {
     return $self;
 }    
 
-=item = $pairer-E<gt>B<parties>( @parties )
+=item $pairer-E<gt>B<parties>( @parties )
 
 Provides the pairer with a complete list of all individuals that can
 be paired. If no parties are specified, it returns the sorted list
