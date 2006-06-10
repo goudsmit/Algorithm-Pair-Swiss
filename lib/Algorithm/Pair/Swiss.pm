@@ -206,7 +206,7 @@ over your pairings.
 
 =head1 AUTHOR
 
-Gilion Goudsmit, E<lt>ggoudsmit@shebang.nl<gt>
+Gilion Goudsmit, E<lt>ggoudsmit@shebang.nlE<gt>
 
 =head1 COPYRIGHT AND LICENSE
 
