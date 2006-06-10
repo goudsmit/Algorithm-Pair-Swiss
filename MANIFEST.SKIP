@@ -1,3 +1,2 @@
 ^\.svn(ignore)?\b
 \/\.svn(ignore)?\b
-^Algorithm-Pair-Swiss-[\d\._]+?\.tar\.gz$
