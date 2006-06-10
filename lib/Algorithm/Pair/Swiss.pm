@@ -81,7 +81,7 @@ use warnings;
 require 5.001;
 
 our $REVISION = sprintf(q{%d} => q{$Rev$} =~ /(\d+)/g);
-our $VERSION = q(0.1);
+our $VERSION = q(0.11);
 
 use Tie::IxHash 1.21;
 
@@ -148,6 +148,13 @@ parties of that pair. This means you can easily feed it the output of
 a previous call to $pair-E<gt>B<pairs>. The selection given is added
 to previously excluded pairs.
 
+If there was an odd number of parties, the lowest ranked party will be
+paired with 'undef', unless it has already been paired with 'undef'. In
+that case, the second-lowest ranked party will get that pairing. Etcetera,
+etcetera. 'Lowest-ranked' is defined as being last in the party-list after
+sorting. In MTG terms, being paired with 'undef' would mean getting a bye
+(and getting the full three points for that round as a consequence).
+
 =cut
 
 sub exclude {
@@ -163,18 +170,21 @@ sub _pairs {
     my ($unpaired,$exclude) = @_;
     my @unpaired = @$unpaired;
     my $p1 = shift @unpaired;
-    if(@unpaired==0) {					            # single player left
-    	return if exists $exclude->{$p1}->{''};		# already had a bye before
-	    return [$p1,undef];	            			# return a bye
-    }
     for my $p2 (@unpaired) {
     	next if exists $exclude->{$p1}->{$p2};		# already paired
        	next if exists $exclude->{$p2}->{$p1};		# already paired
     	return [$p1,$p2] if @unpaired==1;		    # last pair!
-    	@unpaired = grep {$_ ne $p2} @unpaired;		# this pair could work
-    	my @pairs = _pairs(\@unpaired,$exclude);	# so try to pair the rest
+    	my @remaining = grep {$_ ne $p2} @unpaired;	# this pair could work
+    	my @pairs = _pairs(\@remaining,$exclude);	# so try to pair the rest
     	next unless @pairs;				            # no luck
     	return [$p1,$p2],@pairs;			        # yay! return the resultset
+    }
+    if(@unpaired % 2 == 0) {					            # single player left
+    	return if exists $exclude->{$p1}->{''};		# already had a bye before
+	return [$p1,undef] unless @unpaired; 		# return a bye
+	my @pairs = _pairs(\@unpaired,$exclude);
+	return unless @pairs;
+	return @pairs,[$p1,undef];
     }
     return;
 }    
@@ -187,11 +197,7 @@ __END__
 
 =head1 BUGS
 
-Currently the algorithm doesn't seem to handle an odd number of parties
-properly. This is on the top of my list; the module should return a pair
-of a single party with 'undef' ([$p,undef]) for the lowest ranked party
-that doesn't have an exclude with 'undef' yet. Lowest ranked would be
-determined by being last in the list of parties after sorting.
+None that I know of....
 
 =head1 SEE ALSO
 

@@ -15,14 +15,9 @@ $pairer->exclude(@pairs);
 @pairs = $pairer->pairs;
 ok( @pairs == 2,				'still two pairs after first exclusion');
 
-TODO: {
-local $TODO = 'handling of odd number of pairs still broken';
-
 $pairer->exclude(@pairs);
 @pairs = $pairer->pairs;
 ok( @pairs == 2,				'still two pairs after second exclusion');
-
-}
 
 $pairer->exclude(@pairs);
 @pairs = $pairer->pairs;
