@@ -1,6 +1,6 @@
 --- #YAML:1.0
 name: Algorithm-Pair-Swiss
-version: '0.0.1'
+version: v0.0.1
 author:
   - Gilion Goudsmit, E<lt>ggoudsmit@shebang.nl<gt>
 abstract: Perl module to select pairings (designed for 
