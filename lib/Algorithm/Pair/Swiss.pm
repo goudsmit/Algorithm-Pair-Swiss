@@ -15,8 +15,7 @@
 
 =head1 NAME
 
-Algorithm::Pair::Swiss - Perl module to select pairings (designed for 
-Magic: The Gathering tournaments).
+Algorithm::Pair::Swiss - Generate unique pairings for tournaments
 
 =head1 VERSION
 
@@ -41,7 +40,10 @@ This document describes Algorithm::Pair::Swiss version 0.12
 This module was created as an alternative for Algorithm::Pair::Best, which
 probably offers more control over the pairings, in particular regarding
 ensuring the highest overal quality of pairings. Algorithm::Pair::Swiss is
-sort of dumb in this regard, but uses a slightly more intuitive interface.
+sort of dumb in this regard, but uses a slightly more intuitive interface
+and an algorithm that should perform noticably faster. The module was
+primarily designed based on the Swiss rounds system used for Magic: The
+Gathering tournaments.
 
 After creating an Algorithm::Pair::Swiss-E<gt>B<new> object, use the B<parties>
 method to supply a list of parties (players or teams) to be paired. At any
