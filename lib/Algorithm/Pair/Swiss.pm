@@ -1,4 +1,4 @@
-# $Id: Swiss.pm,v 0.1 2006/06/09 02:21:46 giel Exp $
+# $Id$
 
 #   Algorithm::Pair::Swiss.pm
 #
