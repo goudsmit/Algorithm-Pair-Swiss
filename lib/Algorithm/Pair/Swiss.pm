@@ -39,12 +39,12 @@ probably offers more control over the pairings, in particular regarding
 ensuring the highest overal quality of pairings. Algorithm::Pair::Swiss is
 sort of dumb in this regard, but uses a slightly more intuitive interface.
 
-After creating an Algorithm::Pair::Swiss-E<gt>B<new> object, B<parties> a list
-of parties (players or teams) to be paired.  B<exclude> can be used to indicate
-which pairs shouldn't be generated (probably because they've already been
-paired in an earlier round).        
+After creating an Algorithm::Pair::Swiss-E<gt>B<new> object, use the B<parties>
+method to supply a list of parties (players or teams) to be paired. At any
+time the B<exclude> method can be used to indicate which pairs shouldn't be
+generated (probably because they've already been paired in an earlier round).        
 
-The list of parties is sorted and pairer tries to find a set of pairs that
+The list of parties is sorted and the pairer tries to find a set of pairs that
 respects the exclude list, and tries to pair the parties that appear first
 in the sorted list with each other most aggresively.
 
@@ -80,7 +80,8 @@ use strict;
 use warnings;
 require 5.001;
 
-use version; our $VERSION = sprintf(q{0.1.%06d} => q{$Rev$} =~ /(\d+)/g);
+our $REVISION = sprintf(q{%d} => q{$Rev$} =~ /(\d+)/g);
+use version; our $VERSION = qw('0.0.1');
 
 use Tie::IxHash 1.21;
 
