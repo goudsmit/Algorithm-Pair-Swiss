@@ -136,7 +136,7 @@ one pair of parties.
 
 sub pairs {    
     my $self = shift;
-    my @pairs = _pairs($self->parties,$self->{exclude});
+    my @pairs = _pairs([$self->parties],$self->{exclude});
     return @pairs;
 }    
 
