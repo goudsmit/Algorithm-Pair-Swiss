@@ -81,7 +81,7 @@ use warnings;
 require 5.001;
 
 our $REVISION = sprintf(q{%d} => q{$Rev$} =~ /(\d+)/g);
-use version; our $VERSION = qw('0.0.1');
+use version; our $VERSION = qv('0.0.1');
 
 use Tie::IxHash 1.21;
 
