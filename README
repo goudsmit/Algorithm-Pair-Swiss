@@ -16,7 +16,7 @@ To install this module type the following:
    perl Build test
    perl Build install
 
-Or if your Module::Build is not installed on your system:
+Or if Module::Build is not installed on your system:
 
    perl Makefile.PL
    make

@@ -61,17 +61,25 @@ Algorithm::Pair::Swiss-E<gt>B<pairs> explores the parties and returns the first
 pairing solution which satisfies the excludes. Because it doesn't exhaustively
 try all possible solutions, performance is generally pretty reasonable.
 
-For a large number of parties, if is generally easy to find a non-excluded pair,
+For a large number of parties, it is generally easy to find a non-excluded pair,
 and for a smaller number of parties traversal of the possible pairs is done
 reasonably fast.
 
 This module uses the parties as keys in a hash, and uses the empty string ('')
 as a special case in this same hash. For this reason, please observe the
 following restrictions regarding your party values:
- - make sure it is defined
- - make sure it is defined when stringified
- - make sure each is a non-empty string when stringified
- - make sure each is unique when stringified
+
+=over 0
+
+=item - make sure it is defined (not undef)
+
+=item - make sure it is defined when stringified
+
+=item - make sure each is a non-empty string when stringified
+
+=item - make sure each is unique when stringified
+
+=back
 
 All the restrictions on the stringifications are compatible with the perl's
 default stringification of objects, and should be safe for any stringification
