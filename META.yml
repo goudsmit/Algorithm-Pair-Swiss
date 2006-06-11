@@ -1,6 +1,6 @@
 ---
 name: Algorithm-Pair-Swiss
-version: 0.12
+version: 0.12_27
 author:
   - 'Gilion Goudsmit, E<lt>ggoudsmit@shebang.nlE<gt>'
 abstract: Generate unique pairings for tournaments

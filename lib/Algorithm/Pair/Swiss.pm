@@ -119,8 +119,8 @@ sub new {
 Provides the pairer with a complete list of all individuals that can
 be paired. If no parties are specified, it returns the sorted list
 of all parties. This allows you to use this method to extract 'rankings'
-if you happen to have implemented a B<cmp> operation overload in the
-class you parties belong to.
+if you happen to have implemented a B<cmp> operator overload in the
+class your parties belong to.
 
 =cut
 
