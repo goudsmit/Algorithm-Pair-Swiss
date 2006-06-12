@@ -1,5 +1,5 @@
 Algorithm::Pair::Swiss version 0.12
-====================
+===================================
 
 This module was created as an alternative for Algorithm::Pair::Best,
 which probably offers more control over the pairings, in particular
