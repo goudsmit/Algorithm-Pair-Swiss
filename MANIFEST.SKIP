@@ -1,2 +1,2 @@
-^\.svn(ignore)?\b
-\/\.svn(ignore)?\b
+^\.svn\b
+\/\.svn\b
