@@ -13,3 +13,9 @@ Revision history for Perl extension Algorithm::Pair::Swiss.
 	- major fixes to the documentation and README
         - included this Change history file for completeness
 
+0.13  2006-06-19
+	- added ->drop method
+	- explicit stringification to avoid uninitialized value warnings
+	- no more deep recursion warnings
+	- input checks on ->parties method and relevant tests
+

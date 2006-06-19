@@ -1,6 +1,6 @@
 #!/usr/bin/perl -w
 
-use Test::Simple tests => 4;
+use Test::Simple tests => 5;
 
 use Algorithm::Pair::Swiss;
 
@@ -11,7 +11,12 @@ ok( $pairer->isa('Algorithm::Pair::Swiss'),	'proper class');
 my @parties = $pairer->parties;
 ok( @parties == 4,				'instantiation parties assigned properly');
 
+$pairer = Algorithm::Pair::Swiss->new;
 $pairer->parties(1,2,3);
 @parties = $pairer->parties;
 ok( @parties == 3,				'parties method assigned properly');
+
+$pairer->drop(2);
+@parties = $pairer->parties;
+ok( @parties == 2,				'party dropped successfully');
 

@@ -19,7 +19,7 @@ Algorithm::Pair::Swiss - Generate unique pairings for tournaments
 
 =head1 VERSION
 
-This document describes Algorithm::Pair::Swiss version 0.12
+This document describes Algorithm::Pair::Swiss version 0.13
 
 =head1 SYNOPSIS
 
@@ -142,7 +142,7 @@ sub parties {
     for my $i (@{$self->{parties}}) { 
         croak q{All parties must have a defined stringification}
             unless defined "$i";
-        croak q{All parties must have a unique stringification}
+        croak qq{All parties must have a unique stringification, but "$i" seems to be a duplicate}
             if exists $self->{exclude}->{"$i"};
         $self->{exclude}->{"$i"}={} 
     }
@@ -186,6 +186,22 @@ sub exclude {
 	    $self->{exclude}->{"$y"}->{$x?"$x":''} = 1 if $y;
     }	
 }    
+
+=item $pair-E<gt>B<drop>( @parties )
+
+Excludes the given parties from further pairing. The given parties will
+be removed from the internal parties list and won't be returned by the
+parties method anymore. This method is usually used when a participant
+has decided to quit playing.
+
+=cut
+
+sub drop {
+    my $self = shift;
+    my %parties = map { ( "$_" => $_ ) } $self->parties;
+    for my $party (@_) { delete $parties{"$party"} }
+    $self->{parties} = [ values %parties ];
+}
 
 sub _pairs {
     my ($unpaired,$exclude) = @_;
