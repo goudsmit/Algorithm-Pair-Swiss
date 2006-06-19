@@ -92,10 +92,13 @@ Class::DBI object).
 package Algorithm::Pair::Swiss;
 use strict;
 use warnings;
+no warnings 'recursion';
 require 5.001;
 
 our $REVISION = sprintf(q{%d} => q{$Rev$} =~ /(\d+)/g);
 our $VERSION = q(0.12);
+
+use Carp;
 
 ######################################################
 #
@@ -136,7 +139,13 @@ sub parties {
     my $self = shift;
     return sort @{$self->{parties}} unless @_;
     $self->{parties} = [ @_ ];
-    for my $i (@{$self->{parties}}) { $self->{exclude}->{$i}={} }
+    for my $i (@{$self->{parties}}) { 
+        croak q{All parties must have a defined stringification}
+            unless defined "$i";
+        croak q{All parties must have a unique stringification}
+            if exists $self->{exclude}->{"$i"};
+        $self->{exclude}->{"$i"}={} 
+    }
 }
 
 =item @pairs = $pairer-E<gt>B<pairs>
@@ -173,8 +182,8 @@ sub exclude {
     my $self = shift;
     for my $pair (@_) {
 	my ($x,$y) = @$pair;
-	    $self->{exclude}->{$x}->{$y||''} = 1 if $x;
-	    $self->{exclude}->{$y}->{$x||''} = 1 if $y;
+	    $self->{exclude}->{"$x"}->{$y?"$y":''} = 1 if $x;
+	    $self->{exclude}->{"$y"}->{$x?"$x":''} = 1 if $y;
     }	
 }    
 
@@ -183,20 +192,20 @@ sub _pairs {
     my @unpaired = @$unpaired;
     my $p1 = shift @unpaired;
     for my $p2 (@unpaired) {
-    	next if exists $exclude->{$p1}->{$p2};		# already paired
-       	next if exists $exclude->{$p2}->{$p1};		# already paired
+    	next if exists $exclude->{"$p1"}->{"$p2"};	# already paired
+       	next if exists $exclude->{"$p2"}->{"$p1"};	# already paired
     	return [$p1,$p2] if @unpaired==1;		    # last pair!
-    	my @remaining = grep {$_ ne $p2} @unpaired;	# this pair could work
+    	my @remaining = grep {"$_" ne "$p2"} @unpaired;	# this pair could work
     	my @pairs = _pairs(\@remaining,$exclude);	# so try to pair the rest
     	next unless @pairs;				            # no luck
     	return [$p1,$p2],@pairs;			        # yay! return the resultset
     }
     if(@unpaired % 2 == 0) {					            # single player left
-    	return if exists $exclude->{$p1}->{''};		# already had a bye before
-	return [$p1,undef] unless @unpaired; 		# return a bye
-	my @pairs = _pairs(\@unpaired,$exclude);
-	return unless @pairs;
-	return @pairs,[$p1,undef];
+        return if exists $exclude->{"$p1"}->{''};		# already had a bye before
+	    return [$p1,undef] unless @unpaired; 		# return a bye
+	    my @pairs = _pairs(\@unpaired,$exclude);
+	    return unless @pairs;
+	    return @pairs,[$p1,undef];
     }
     return;
 }    
