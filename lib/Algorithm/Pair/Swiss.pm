@@ -96,7 +96,7 @@ no warnings 'recursion';
 require 5.001;
 
 our $REVISION = sprintf(q{%d} => q{$Rev$} =~ /(\d+)/g);
-our $VERSION = q(0.12);
+our $VERSION = q(0.13);
 
 use Carp;
 
