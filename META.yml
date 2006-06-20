@@ -1,6 +1,6 @@
 ---
 name: Algorithm-Pair-Swiss
-version: 0.12_27
+version: 0.13
 author:
   - 'Gilion Goudsmit, E<lt>ggoudsmit@shebang.nlE<gt>'
 abstract: Generate unique pairings for tournaments
@@ -14,7 +14,7 @@ build_requires:
 provides:
   Algorithm::Pair::Swiss:
     file: lib/Algorithm/Pair/Swiss.pm
-    version: 0.12
+    version: 0.13
 generated_by: Module::Build version 0.2801
 meta-spec:
   url: http://module-build.sourceforge.net/META-spec-v1.2.html
