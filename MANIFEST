@@ -9,4 +9,7 @@ Changes
 t/pairer.t
 t/even.t
 t/odd.t
+t/input.t
+t/pod.t
+t/pod_coverage.t
 

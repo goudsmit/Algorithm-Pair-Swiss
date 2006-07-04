@@ -19,7 +19,7 @@ Algorithm::Pair::Swiss - Generate unique pairings for tournaments
 
 =head1 VERSION
 
-This document describes Algorithm::Pair::Swiss version 0.13
+This document describes Algorithm::Pair::Swiss version 0.14
 
 =head1 SYNOPSIS
 
@@ -69,7 +69,7 @@ This module uses the parties as keys in a hash, and uses the empty string ('')
 as a special case in this same hash. For this reason, please observe the
 following restrictions regarding your party values:
 
-=over 0
+=over 1
 
 =item - make sure it is defined (not undef)
 
@@ -96,7 +96,7 @@ no warnings 'recursion';
 require 5.001;
 
 our $REVISION = sprintf(q{%d} => q{$Rev$} =~ /(\d+)/g);
-our $VERSION = q(0.13);
+our $VERSION = q(0.14);
 
 use Carp;
 
@@ -249,7 +249,7 @@ Perl 5.6.0 or later (though it will probably work ok with earlier versions)
 
 =head1 SEE ALSO
 
-=over 0
+=over 1
 
 =item o Algorithm::Pair::Best
 

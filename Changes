@@ -19,3 +19,8 @@ Revision history for Perl extension Algorithm::Pair::Swiss.
 	- no more deep recursion warnings
 	- input checks on ->parties method and relevant tests
 
+0.14  2006-07-04
+        - added pod and pod coverage tests
+        - added input tests
+        - fixed some documentation errors
+
