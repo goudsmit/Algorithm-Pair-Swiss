@@ -6,13 +6,14 @@ my $build = Module::Build->new(
 	        		'perl'		=> '5.6.0',
 			   },
         build_requires	=> {
-				'Test::More'     => 0,
+				'Test::More'        => 0,
+                'Test::Exception'   => 0,
 			   },		
 	add_to_cleanup	=> [ 'Algorithm-Pair-Swiss-*.tar.gz' ],
 );
 
 if(exists $build->args->{snapshot}) {
-	my ($revision) = `svn info` =~ /^Revision: (\d+)$/gms;
+	my $revision = `git log --pretty=oneline | wc -l`;
 	$build->{properties}->{dist_version} .= '_'.$revision;
 }
 
